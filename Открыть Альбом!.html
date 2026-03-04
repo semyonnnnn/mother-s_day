@@ -1,19 +1,22 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Альбом ко Дню Матери</title>
-    <link rel="stylesheet" href="./styles/styles.css" />
-    <link rel="stylesheet" href="./styles/fonts.css" />
-  </head>
-  <body>
-    <div class="header">
-      Альбом ко Дню Матери, сделанный с любовью в Свердловскстате
-    </div>
 
-    <div class="floating-bg" id="floatingBg"></div>
-    <!-- <div class="arrows">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>8 марта</title>
+  <link rel="stylesheet" href="./styles/styles.css" />
+  <link rel="stylesheet" href="./styles/fonts.css" />
+  <script src="./js/script.js" defer type="module"></script>
+</head>
+
+<body>
+  <div class="header">
+    С 8 марта!
+  </div>
+
+  <div class="floating-bg" id="floatingBg"></div>
+  <!-- <div class="arrows">
       <div class="arrow-container ac-l">
         <svg class="a-left" viewBox="0 0 24 24" width="100" height="100">
           <path
@@ -42,215 +45,9 @@
       </div>
     </div> -->
 
-    <div class="slider" id="slider"></div>
+  <div class="slider" id="slider"></div>
 
-    <audio id="bgMusic" loop autoplay muted>
-      <source src="./assets/audio.mp3" type="audio/mpeg" />
-      Ваш браузер не поддерживает аудио.
-    </audio>
+  <audio id="bgMusic" autoplay muted></audio>
+</body>
 
-    <script>
-      const audio = document.getElementById("bgMusic");
-
-      // Enable audio on first click
-      function enableAudio() {
-        audio.muted = false;
-        audio.play().catch((error) => {
-          console.log("Автовоспроизведение заблокировано:", error);
-        });
-      }
-      document.addEventListener("click", enableAudio, { once: true });
-
-      // Wishes array
-      const wishes = [
-        "Сделано с любовью в Свердловскстате",
-        "Ты — моя первая любовь и вечная опора",
-        "Мама, твоя улыбка лечит лучше любого лекарства",
-        "Спасибо за каждое «всё будет хорошо»",
-        "Ты делаешь мой мир мягче и добрее",
-        "Твоя любовь — как тёплое солнце в самый пасмурный день",
-        "Мама — это не просто слово, это целый мир",
-        "Ты — мой ангел без крыльев",
-        "С тобой даже тишина говорит о любви",
-        "Ты вдохновляешь меня быть лучше каждый день",
-        "Твоя забота — мой самый надёжный дом",
-        "Мама, ты — моя сила и моя нежность",
-        "Ты видишь меня лучше, чем я сам",
-        "Твои руки — самые тёплые на свете",
-        "Ты умеешь превращать обычное в чудо",
-        "Мама — это когда тебя понимают без слов",
-        "Ты даришь мне смелость быть собой",
-        "Твоя вера в меня — мой главный двигатель",
-        "Спасибо, что ты всегда рядом — даже на расстоянии",
-        "Ты — моя самая большая гордость",
-        "Ты помнишь всё: мои мечты, страхи и детские шалости",
-        "Мама, ты — моё «всё будет»",
-        "Ты учишь меня видеть красоту в мелочах",
-        "Твоя любовь — безусловная, как воздух",
-        "С тобой я чувствую себя в безопасности",
-        "Ты — моя внутренняя гавань",
-        "Твои глаза — это отражение моей души",
-        "Мама, ты — моё вдохновение и поддержка",
-        "Ты рядом даже в мыслях — и этого хватает",
-        "Ты — мой первый и самый родной человек",
-        "Ты умеешь слушать сердцем",
-        "Твоя доброта делает этот мир светлее",
-        "Мама — это когда любят просто за то, что ты есть",
-        "Ты — моя вечная весна",
-        "Твои объятия — лучшее лекарство от грусти",
-        "Ты — моя самая большая любовь",
-        "Спасибо за терпение, мудрость и безграничную любовь",
-        "Ты — моя звезда в самые тёмные ночи",
-        "Ты — моя тишина в шумном мире",
-        "Мама, твоя душа — чище родниковой воды",
-        "Ты даришь тепло даже в мороз",
-        "Ты — мой внутренний компас",
-        "Ты учишь меня быть человеком",
-        "Твоя любовь — мой самый ценный дар",
-        "Мама, с тобой я — дома",
-        "Ты — моя самая большая благодарность",
-        "Ты — нежность в моём сердце",
-        "С тобой я знаю: я не один",
-        "Ты — моя вечная надежда",
-        "Ты — моя радость и свет",
-        "Ты — моя любовь навсегда",
-        "Ты — моя внутренняя гавань",
-        "Твои глаза — это отражение моей души",
-        "Мама, ты — моё вдохновение и поддержка",
-        "Ты рядом даже в мыслях — и этого хватает",
-        "Ты — мой первый и самый родной человек",
-        "Ты умеешь слушать сердцем",
-      ];
-
-      // Image paths
-      const fileNames = Array.from({ length: 56 }, (_, i) => `${i + 1}.jpg`);
-      const photoUrls = fileNames.map((f) => `./assets/${f}`);
-
-      // Floating sparkles
-      function createSparkles() {
-        const bg = document.getElementById("floatingBg");
-        for (let i = 0; i < 50; i++) {
-          const sparkle = document.createElement("div");
-          sparkle.className = "sparkle";
-          sparkle.style.left = `${Math.random() * 100}%`;
-          sparkle.style.top = `${Math.random() * 100}%`;
-          sparkle.style.setProperty("--delay", `${Math.random() * 2}s`);
-          sparkle.style.setProperty("--duration", `${1 + Math.random() * 2}s`);
-          bg.appendChild(sparkle);
-        }
-      }
-
-      // Floating items
-      function createFloatingItems() {
-        const bg = document.getElementById("floatingBg");
-        const items = [
-          `<svg viewBox="0 0 100 100" width="40" height="40"><path fill="#9c51e0" d="M50,15 C60,5 80,10 80,30 C80,50 50,70 50,70 C50,70 20,50 20,30 C20,10 40,5 50,15 Z"/></svg>`,
-          `<svg viewBox="0 0 100 100" width="36" height="36"><path fill="#b161e0" d="M50,20 C60,10 80,15 80,35 C80,55 50,75 50,75 C50,75 20,55 20,35 C20,15 40,10 50,20 Z"/></svg>`,
-          `<svg viewBox="0 0 100 100" width="42" height="42"><circle cx="50" cy="50" r="10" fill="#a051e0"/><circle cx="35" cy="40" r="8" fill="#b161e0"/><circle cx="65" cy="40" r="8" fill="#b161e0"/><circle cx="65" cy="60" r="8" fill="#b161e0"/><circle cx="35" cy="60" r="8" fill="#b161e0"/></svg>`,
-        ];
-        for (let i = 0; i < 30; i++) {
-          const el = document.createElement("div");
-          el.className = "bg-item";
-          el.innerHTML = items[Math.floor(Math.random() * items.length)];
-          el.style.left = `${Math.random() * 100}vw`;
-          el.style.setProperty("--dx", (Math.random() - 0.5) * 2);
-          el.style.animationDuration = `${25 + Math.random() * 35}s`;
-          el.style.animationDelay = `${-Math.random() * 15}s`;
-          el.style.opacity = 0.25 + Math.random() * 0.25;
-          bg.appendChild(el);
-        }
-      }
-
-      // Create slides
-      function createSlides() {
-        const slider = document.getElementById("slider");
-        for (let i = 0; i < photoUrls.length + 1; i++) {
-          const slide = document.createElement("div");
-          const isCover = i === 0;
-          const isType2 = !isCover && i % 2 === 0;
-          slide.className = `slide ${
-            isCover ? "cover" : isType2 ? "type2" : "type1"
-          }`;
-
-          if (isCover) {
-            slide.textContent = "❤️";
-            slide.style.color = "#d1478c";
-            slide.style.display = "flex";
-            slide.style.justifyContent = "center";
-            slide.style.alignItems = "center";
-          } else {
-            const img = document.createElement("img");
-            img.className = "photo";
-            img.src = photoUrls[i - 1];
-            img.alt = "Фото для Дня Матери";
-            img.loading = "lazy";
-            img.style.display = "block";
-            slide.appendChild(img);
-          }
-
-          const wish = document.createElement("div");
-          wish.className = "wish-label";
-          wish.textContent = wishes[i] || "";
-          slide.appendChild(wish);
-
-          slider.appendChild(slide);
-        }
-      }
-
-      // Layout and slider sizing
-      const sliderEl = document.getElementById("slider");
-      let currentIndex = 0;
-      let autoSlide;
-
-      function setSliderLayout() {
-        const slides = document.querySelectorAll(".slide");
-        slides.forEach((slide) => {
-          slide.style.width = `${window.innerWidth}px`;
-          slide.style.flexShrink = "0";
-        });
-        sliderEl.style.display = "flex";
-        sliderEl.style.transition = "transform 0.5s ease";
-        sliderEl.style.width = `${slides.length * window.innerWidth}px`;
-      }
-      window.addEventListener("resize", setSliderLayout);
-
-      // Slider control
-      function nextSlide() {
-        currentIndex++;
-        if (currentIndex >= photoUrls.length + 1) currentIndex = 0; // infinite loop
-        sliderEl.style.transform = `translateX(-${
-          currentIndex * window.innerWidth
-        }px)`;
-      }
-
-      function startAutoSlide() {
-        clearInterval(autoSlide);
-        autoSlide = setInterval(nextSlide, 3000);
-      }
-
-      // Pause on hover
-      // sliderEl.addEventListener("mouseenter", () => clearInterval(autoSlide));
-      // sliderEl.addEventListener("mouseleave", startAutoSlide);
-
-      // Arrow clicks
-      // document.querySelector(".ac-l").addEventListener("click", () => {
-      //   currentIndex--;
-      //   if (currentIndex < 0) currentIndex = photoUrls.length;
-      //   sliderEl.style.transform = `translateX(-${
-      //     currentIndex * window.innerWidth
-      //   }px)`;
-      // });
-
-      // document
-      //   .querySelector(".ac-r")
-      //   .addEventListener("click", () => nextSlide());
-
-      // Initialize
-      createSparkles();
-      createFloatingItems();
-      createSlides();
-      setSliderLayout();
-      setTimeout(() => startAutoSlide(), 100);
-    </script>
-  </body>
 </html>

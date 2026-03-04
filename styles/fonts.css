@@ -16,3 +16,37 @@
   src: url("../fonts/Great_Vibes/GreatVibes-Regular.ttf") format("truetype");
   unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F;
 }
+@font-face {
+  font-family: "Pix";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/Pix/Pix.ttf") format("truetype");
+  unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F;
+}
+
+@font-face {
+  font-family: "Creep";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/Creep/Creep.ttf") format("truetype");
+  unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F;
+}
+
+@font-face {
+  font-family: "Sweet";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/Sweet/Sweet.ttf") format("truetype");
+  unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F;
+}
+@font-face {
+  font-family: "Gara";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/Gara/Gara.ttf") format("truetype");
+  unicode-range: U+0400-04FF, U+0500-052F, U+2DE0-2DFF, U+A640-A69F;
+}

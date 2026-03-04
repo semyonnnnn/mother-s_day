@@ -2,181 +2,421 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #8a2a5c;
 }
 
 body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   overflow: hidden;
-  background: linear-gradient(to bottom, #f8f0ff, #fffaf5);
   height: 100vh;
-  font-family: "Montserrat", sans-serif;
-  position: relative;
-  background-color: #f8f0ff;
-}
-
-/* Заголовок */
-.header {
-  position: absolute;
-  top: 20px;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  z-index: 10;
-  font-family: "Great Vibes", cursive;
-  font-size: 1.4vw;
-  font-weight: 400;
-  color: #8a2a5c;
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  letter-spacing: 1px;
-  padding: 0 20px;
-}
-
-/* Фон с фиолетовыми цветами и блестками */
-.floating-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.bg-item {
-  position: absolute;
-  opacity: 0.35;
-  animation: float 30s infinite ease-in-out;
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(100vh) translateX(0);
-  }
-  100% {
-    transform: translateY(-100px) translateX(calc(var(--dx, 0) * 100px));
-  }
-}
-
-/* Блестки */
-.sparkle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: #fff;
-  border-radius: 50%;
-  opacity: 0.8;
-  box-shadow: 0 0 8px #fff, 0 0 16px #fff;
-  animation: sparkle 2s infinite ease-in-out;
-}
-
-@keyframes sparkle {
-  0%,
-  100% {
-    opacity: 0.8;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-}
-
-/* Слайдер */
-.slider {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   display: flex;
-  z-index: 2;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at 30% 50%, #fff2d7, #ffe4f3, #f0e4ff);
 }
 
-.slide {
-  min-width: 100vw;
-  height: 100vh;
+/* Фон из плавающих цветов */
+.flower-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.floating-flower {
+  position: absolute;
+  font-size: 60px;
+  opacity: 0.4;
+  filter: drop-shadow(0 0 15px currentColor);
+  animation: flowerFloat 25s infinite linear;
+  user-select: none;
+}
+
+@keyframes flowerFloat {
+  0% {
+    transform: translateY(110vh) rotate(0deg) scale(0.8);
+    opacity: 0.2;
+  }
+
+  20% {
+    opacity: 0.6;
+  }
+
+  80% {
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateY(-20vh) rotate(360deg) scale(1.5);
+    opacity: 0;
+  }
+}
+
+.album-container {
+  position: relative;
+  width: 95%;
+  height: 95vh;
+  perspective: 1500px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  overflow: hidden;
+  z-index: 10;
+  background: rgba(255, 240, 245, 0.2);
+  backdrop-filter: blur(3px);
+}
+
+.album {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: transparent;
+  border-radius: 15px;
+}
+
+/* Рамка для фото — строго по центру */
+.photo-frame {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 28px;
-  padding: 80px 30px 30px;
+  justify-content: center;
+  width: 90%;
+  max-width: 1100px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 30px;
+  padding: 25px;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  outline: 3px solid rgba(255, 200, 220, 0.5);
+  outline-offset: 8px;
 }
 
-.card {
-  border-radius: 22px;
-  overflow: hidden;
-  box-shadow: 0 12px 40px rgba(170, 60, 110, 0.12);
-  position: relative;
+/* Контейнер фото с сохранением пропорций */
+.image-wrapper {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: transparent;
-  width: auto;
-  height: auto;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: inset 0 0 30px rgba(255, 200, 220, 0.7);
 }
 
-.photo {
-  max-width: 90vw;
-  max-height: 80vh;
-  object-fit: cover; /* fills the space while cropping */
-  border-radius: 22px; /* rounded corners */
-  display: block;
-  margin: 0 auto; /* center horizontally */
+.image-wrapper img {
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: 15px;
+  transition: transform 0.5s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-.slide.type2 .card {
-  width: 1253px;
-  height: 704px;
-}
-
-.wish-label {
-  font-family: "Caveat", cursive;
-  font-size: 2vw;
-  font-weight: 700;
-  color: #a0316b;
+/* Поздравление под фото */
+.wish-container {
+  margin-top: 25px;
+  padding: 15px 30px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 60px;
+  font-size: 26px;
+  color: #b34167;
   text-align: center;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  max-width: 90vw;
-  padding: 0 20px;
-  z-index: 2;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+  border: 2px solid #ffb6c1;
+  width: 100%;
+  backdrop-filter: blur(4px);
+  line-height: 1.4;
 }
 
-.slider.animate {
-  transition: transform 1s cubic-bezier(0.33, 1, 0.68, 1);
-}
-.arrows {
-  z-index: 99;
+/* Декоративные иконки вокруг рамки (мелкие) — цвета задаются через JS */
+.decor {
   position: absolute;
-  inset: 0;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
+  font-size: 30px;
+  filter: drop-shadow(0 0 8px currentColor);
+  animation: decorTwinkle 2.8s infinite alternate ease-in-out;
+  pointer-events: none;
+  z-index: 20;
 }
-.arrow-container {
-  width: 10vw;
-  height: 100%;
-  background-color: rgba(255, 192, 203, 0.2);
+
+.decor-1 {
+  top: -20px;
+  left: -20px;
+  animation-delay: 0s;
+}
+
+.decor-2 {
+  top: -20px;
+  right: -20px;
+  animation-delay: 0.3s;
+}
+
+.decor-3 {
+  bottom: -20px;
+  left: -20px;
+  animation-delay: 0.6s;
+}
+
+.decor-4 {
+  bottom: -20px;
+  right: -20px;
+  animation-delay: 0.9s;
+}
+
+.decor-5 {
+  top: 30%;
+  left: -35px;
+  animation-delay: 0.2s;
+}
+
+.decor-6 {
+  top: 30%;
+  right: -35px;
+  animation-delay: 0.5s;
+}
+
+.decor-7 {
+  bottom: 30%;
+  left: -35px;
+  animation-delay: 0.8s;
+}
+
+.decor-8 {
+  bottom: 30%;
+  right: -35px;
+  animation-delay: 1.1s;
+}
+
+@keyframes decorTwinkle {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.7) rotate(-8deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.3) rotate(12deg);
+  }
+}
+
+/* Навигация */
+.navigation {
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  z-index: 100;
+}
+
+.nav-btn {
+  background: linear-gradient(135deg, #ff66a3, #ff3385);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 35px;
   cursor: pointer;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: center;
-}
-.arrow-container:hover {
-  background-color: rgba(255, 192, 203, 0.5);
+  gap: 10px;
+  backdrop-filter: blur(2px);
 }
 
-.arrow {
-  color: rgba(160, 49, 107, 0.1);
+.nav-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
 }
-.a-left {
-  transform: rotate(-180deg);
+
+.nav-btn:active {
+  transform: translateY(2px);
 }
-.ac-l {
+
+.music-control {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
   justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
 }
-.ac-r {
-  justify-content: center;
+
+.music-control:hover {
+  transform: scale(1.1);
+  background: white;
+}
+
+.music-control i {
+  font-size: 28px;
+  color: #ff3385;
+}
+
+/* Анимации появления страницы (8 видов) */
+@keyframes fadeScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-70px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(70px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(70px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rotateIn {
+  0% {
+    opacity: 0;
+    transform: rotate(-8deg) scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+@keyframes flipIn {
+  0% {
+    opacity: 0;
+    transform: perspective(400px) rotateX(90deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: perspective(400px) rotateX(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.photo-frame {
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.title {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #c9216b;
+  font-size: 44px;
+  font-weight: bold;
+  text-shadow: 2px 2px 10px rgba(255, 200, 220, 0.8);
+  z-index: 30;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+  padding: 10px 0;
+  border-radius: 60px;
+  width: 80%;
+  margin-left: 10%;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.page-counter {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 18px;
+  color: #b34167;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  backdrop-filter: blur(4px);
 }
