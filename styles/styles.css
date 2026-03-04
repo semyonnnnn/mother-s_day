@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #8a2a5c;
+}
+
+body {
+  overflow: hidden;
+  background: linear-gradient(to bottom, #f8f0ff, #fffaf5);
+  height: 100vh;
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+  background-color: #f8f0ff;
+}
+
+/* Заголовок */
+.header {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+  font-family: "Great Vibes", cursive;
+  font-size: 1.4vw;
+  font-weight: 400;
+  color: #8a2a5c;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  letter-spacing: 1px;
+  padding: 0 20px;
+}
+
+/* Фон с фиолетовыми цветами и блестками */
+.floating-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bg-item {
+  position: absolute;
+  opacity: 0.35;
+  animation: float 30s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) translateX(0);
+  }
+  100% {
+    transform: translateY(-100px) translateX(calc(var(--dx, 0) * 100px));
+  }
+}
+
+/* Блестки */
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.8;
+  box-shadow: 0 0 8px #fff, 0 0 16px #fff;
+  animation: sparkle 2s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+}
+
+/* Слайдер */
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 2;
+}
+
+.slide {
+  min-width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  padding: 80px 30px 30px;
+}
+
+.card {
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(170, 60, 110, 0.12);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  width: auto;
+  height: auto;
+}
+
+.photo {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: cover; /* fills the space while cropping */
+  border-radius: 22px; /* rounded corners */
+  display: block;
+  margin: 0 auto; /* center horizontally */
+}
+
+.slide.type2 .card {
+  width: 1253px;
+  height: 704px;
+}
+
+.wish-label {
+  font-family: "Caveat", cursive;
+  font-size: 2vw;
+  font-weight: 700;
+  color: #a0316b;
+  text-align: center;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  max-width: 90vw;
+  padding: 0 20px;
+  z-index: 2;
+}
+
+.slider.animate {
+  transition: transform 1s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.arrows {
+  z-index: 99;
+  position: absolute;
+  inset: 0;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.arrow-container {
+  width: 10vw;
+  height: 100%;
+  background-color: rgba(255, 192, 203, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.arrow-container:hover {
+  background-color: rgba(255, 192, 203, 0.5);
+}
+
+.arrow {
+  color: rgba(160, 49, 107, 0.1);
+}
+.a-left {
+  transform: rotate(-180deg);
+}
+.ac-l {
+  justify-content: center;
+}
+.ac-r {
+  justify-content: center;
+}
