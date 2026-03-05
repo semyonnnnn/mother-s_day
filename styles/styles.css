@@ -27,6 +27,7 @@ body {
 }
 
 .floating-flower {
+  top: -10rem;
   position: absolute;
   font-size: 60px;
   opacity: 0.4;
@@ -60,12 +61,12 @@ body {
   width: 95%;
   height: 95vh;
   perspective: 1500px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25); */
   border-radius: 15px;
   overflow: hidden;
   z-index: 10;
-  background: rgba(255, 240, 245, 0.2);
-  backdrop-filter: blur(3px);
+  /* background: rgba(255, 240, 245, 0.2); */
+  /* backdrop-filter: blur(3px); */
 }
 
 .album {
@@ -389,7 +390,7 @@ body {
 
 .title {
   position: absolute;
-  top: 30px;
+  top: 0;
   left: 0;
   width: 100%;
   text-align: center;
@@ -398,13 +399,10 @@ body {
   font-weight: bold;
   text-shadow: 2px 2px 10px rgba(255, 200, 220, 0.8);
   z-index: 30;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(4px);
   padding: 10px 0;
-  border-radius: 60px;
   width: 80%;
   margin-left: 10%;
-  border: 2px solid rgba(255, 255, 255, 0.6);
+  font-family: "Sweet", sans-serif;
 }
 
 .page-counter {

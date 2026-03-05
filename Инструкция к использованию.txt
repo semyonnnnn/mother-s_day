@@ -1,7 +1,4 @@
-Уважаемые коллеги!
-
-Запускаем файл "Открыть альбом!" и нажимаем правой кнопкой мышки для запуска мелодии!
-
-По всем вопросам обращаться по тел. 312 (Опарина А.С.) или тел. 410 (Велижанина Н.В.)
-
-С Уважением, Молодежный совет Свердловскстата!
+1. открыть 211 в браузере, f11 (вверху клавиатуры справа) тык, затем нажать кнопку проигрывания
+2. при необходимости выключить - выключить
+3. при необходимости включить - см. 1 пункт
+4. https://www.google.com/search?sca_esv=110a515e0d96392e&sxsrf=ANbL-n7IvqyWPDx8xRnKMsgc4T-fJuBP3Q:1772726493216&udm=2&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpaEWjvZ2Py1XXV8d8KvlI3vWUtYx0DZdicpfE1faGYemg2KC4yuMPyQlIvlWqq2At2yMvCZgi_bwXXU0sv2NZz-do-7reUzJedhGnIXhKGuUFyoXjhqCzaayGmBsnSNjybdoBFcfZIo4O3r11dfjsX9noz133K6nvAb6AlSigrJGaSkHGzBju-O7lsi27eOFNhvv6ug&q=%D0%BC%D0%B0%D0%BA%D0%B0%D0%BA%D1%83+%D0%BE%D1%82%D0%BA%D0%B0%D1%87%D0%B8%D0%B2%D0%B0%D1%8E%D1%82+%D0%BC%D0%B5%D0%BC&sa=X&ved=2ahUKEwizy6XnkImTAxUuXUEAHbaqMLIQtKgLegQIGRAB&biw=1707&bih=811&dpr=1.13#sv=CAMSVhoyKhBlLV83V1UwMGtfSVB3RHBNMg5fN1dVMDBrX0lQd0RwTToOMzJPNTBKUDdiYXVaNE0gBCocCgZtb3NhaWMSEGUtXzdXVTAwa19JUHdEcE0YADABGAcgyLiMoQwwAkoIEAIYAiACKAI
